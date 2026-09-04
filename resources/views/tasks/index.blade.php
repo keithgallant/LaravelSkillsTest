@@ -57,12 +57,21 @@
             <tbody id="sortable">
 
                 @if($tasks->count() === 0) 
+                    @if($projects->count() === 0)
+                    <tr>
+                        <td colspan="6">
+                            Before you can create any tasks, you must first create a project. 
+                            <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">Create a Project</a>
+                        </td>
+                    </tr>
+                    @else 
                     <tr>
                         <td colspan="6">
                             Please create a task to get started.
                             <a class="btn btn-success btn-sm" href="{{ route('tasks.create') }}">Create a Task</a>
                         </td>
                     </tr>
+                    @endif
                 @endif
                 @foreach($tasks as $index => $task)
                     <tr data-id="{{ $task->id }}"  style="cursor: grab;">
@@ -77,7 +86,7 @@
                                 <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this task?')">Delete</button>
                                 </form>
                             </div>
                         </td>
