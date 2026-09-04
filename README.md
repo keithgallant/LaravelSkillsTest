@@ -16,3 +16,8 @@
     php artisan serve
 ```
 NOTE: You must first create at least one project before you can start adding tasks. 
+
+NOTE: You can run basic feature tests on the Tasks Model by running the following command: 
+```bash
+    php artisan test
+```

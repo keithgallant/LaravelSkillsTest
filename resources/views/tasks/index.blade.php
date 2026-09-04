@@ -78,7 +78,7 @@
                         <td><span class="handle">☰</span></td>
                         <td>{{ $task->name }}</td>
                         <td>{{ $index }}</td>
-                        <td>{{ $task->project->name }}</td>
+                        <td>{{ isset($task->project) ? $task->project->name : '' }}</td>
                         <td>
                             <div class="d-flex">
                                 <a class="btn btn-secondary btn-sm" href="{{ route('tasks.edit', $task->id) }}">Edit</a>
